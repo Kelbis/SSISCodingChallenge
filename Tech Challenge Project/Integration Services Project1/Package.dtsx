@@ -1,0 +1,2317 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/20/2020 10:21:35 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SAMPEDRO23"
+  DTS:CreatorName="sampedro23\kelbis"
+  DTS:DTSID="{4EC13650-19E2-4461-B683-031D63C04D5F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.93"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{0ED611E1-E6B1-415B-B608-C005253F106A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CSV Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:Description="CSV Connection Manager"
+      DTS:DTSID="{AEE01D2C-7037-4700-BE10-AC88CF80C75B}"
+      DTS:ObjectName="CSV Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="RaggedRight"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter="_x000D__x000A_"
+          DTS:TextQualifier="_x0022__x0022_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Temp\Coding Challenge\Input\Input1.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Store,Product,Dollars"
+              DTS:DTSID="{EC3BDB7E-D953-4554-8729-566793322159}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{ACB10354-AC2E-430B-9193-676FE82A082E}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Temp\Coding Challenge\Input\Input2.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager 1]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{28B79E2C-0E5A-4796-A5C7-D3B04B7297D6}"
+      DTS:ObjectName="Flat File Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Temp\Coding Challenge\Output\Result.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Product Name"
+              DTS:DTSID="{FCD0E266-02E0-41EC-AAB9-178C1ADA611F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="UPC"
+              DTS:DTSID="{E279AB53-0712-4C37-8D13-156A27346D47}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="19"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Store"
+              DTS:DTSID="{2DFE3277-F9FC-4167-A2DD-23A81353B683}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Dollars"
+              DTS:DTSID="{6ABBA36C-7CB0-430C-86E1-C0B00CE683C2}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Process files CSV and Xls"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{7ea3a24e-2436-469b-84c0-423239faea1a}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Process files CSV and Xls"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Process files CSV and Xls\Add &quot;$&quot; for output file"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Add &quot;$&quot; for output file"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Process files CSV and Xls\Add &quot;$&quot; for output file.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Add &quot;$&quot; for output file.Inputs[Derived Column Input].Columns[Dollars]"
+                      cachedDataType="cy"
+                      cachedName="Dollars"
+                      lineageId="Package\Process files CSV and Xls\Final Sort.Outputs[Sort Output].Columns[Dollars]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Process files CSV and Xls\Add &quot;$&quot; for output file.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Process files CSV and Xls\Add &quot;$&quot; for output file.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Add &quot;$&quot; for output file.Outputs[Derived Column Output].Columns[dcDollars]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Process files CSV and Xls\Add &quot;$&quot; for output file.Outputs[Derived Column Output].Columns[dcDollars]"
+                      name="dcDollars"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,50,1252)"$" + (DT_STR,50,1252)#{Package\Process files CSV and Xls\Final Sort.Outputs[Sort Output].Columns[Dollars]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,50,1252)"$" + (DT_STR,50,1252)Dollars</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Process files CSV and Xls\Add &quot;$&quot; for output file.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Process files CSV and Xls\Add &quot;$&quot; for output file.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Add &quot;$&quot; for output file.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Process files CSV and Xls\Add &quot;$&quot; for output file.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Add &quot;$&quot; for output file.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Process files CSV and Xls\Add &quot;$&quot; for output file.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Process files CSV and Xls\Convert Store to int"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Convert Store to int"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Process files CSV and Xls\Convert Store to int.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Convert Store to int.Inputs[Data Conversion Input].Columns[Store]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Store"
+                      lineageId="Package\Process files CSV and Xls\Transform Column CSV.Outputs[Derived Column Output].Columns[Store]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Process files CSV and Xls\Convert Store to int.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Process files CSV and Xls\Convert Store to int.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Convert Store to int.Outputs[Data Conversion Output].Columns[IntStore]"
+                      dataType="ui4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Process files CSV and Xls\Convert Store to int.Outputs[Data Conversion Output].Columns[IntStore]"
+                      name="IntStore"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Process files CSV and Xls\Transform Column CSV.Outputs[Derived Column Output].Columns[Store]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Process files CSV and Xls\Convert Store to int.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Process files CSV and Xls\Convert Store to int.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Convert Store to int.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Process files CSV and Xls\Convert Store to int.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Convert Store to int.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Process files CSV and Xls\Convert Store to int.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Process files CSV and Xls\CSV Result"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="1033"
+              name="CSV Result"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Process files CSV and Xls\CSV Result.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager 1]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Process files CSV and Xls\CSV Result.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\CSV Result.Inputs[Flat File Destination Input].Columns[Store]"
+                      cachedDataType="ui4"
+                      cachedName="Store"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Process files CSV and Xls\CSV Result.Inputs[Flat File Destination Input].ExternalColumns[Store]"
+                      lineageId="Package\Process files CSV and Xls\Final Sort.Outputs[Sort Output].Columns[Store]" />
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\CSV Result.Inputs[Flat File Destination Input].Columns[Product Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Product Name"
+                      cachedSortKeyPosition="2"
+                      externalMetadataColumnId="Package\Process files CSV and Xls\CSV Result.Inputs[Flat File Destination Input].ExternalColumns[Product Name]"
+                      lineageId="Package\Process files CSV and Xls\Final Sort.Outputs[Sort Output].Columns[Product Name]" />
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\CSV Result.Inputs[Flat File Destination Input].Columns[UPC]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="UPC"
+                      externalMetadataColumnId="Package\Process files CSV and Xls\CSV Result.Inputs[Flat File Destination Input].ExternalColumns[UPC]"
+                      lineageId="Package\Process files CSV and Xls\Final Sort.Outputs[Sort Output].Columns[UPC]" />
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\CSV Result.Inputs[Flat File Destination Input].Columns[dcDollars]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="dcDollars"
+                      externalMetadataColumnId="Package\Process files CSV and Xls\CSV Result.Inputs[Flat File Destination Input].ExternalColumns[Dollars]"
+                      lineageId="Package\Process files CSV and Xls\Add &quot;$&quot; for output file.Outputs[Derived Column Output].Columns[dcDollars]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Process files CSV and Xls\CSV Result.Inputs[Flat File Destination Input].ExternalColumns[Dollars]"
+                      dataType="cy"
+                      name="Dollars" />
+                    <externalMetadataColumn
+                      refId="Package\Process files CSV and Xls\CSV Result.Inputs[Flat File Destination Input].ExternalColumns[Store]"
+                      dataType="ui4"
+                      name="Store" />
+                    <externalMetadataColumn
+                      refId="Package\Process files CSV and Xls\CSV Result.Inputs[Flat File Destination Input].ExternalColumns[Product Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Product Name" />
+                    <externalMetadataColumn
+                      refId="Package\Process files CSV and Xls\CSV Result.Inputs[Flat File Destination Input].ExternalColumns[UPC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="UPC" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Process files CSV and Xls\Final Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Final Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Process files CSV and Xls\Final Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Final Sort.Inputs[Sort Input].Columns[Store]"
+                      cachedDataType="ui4"
+                      cachedName="Store"
+                      lineageId="Package\Process files CSV and Xls\Grouping and Sum Dollars.Outputs[Aggregate Output 1].Columns[Store]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Final Sort.Inputs[Sort Input].Columns[Product Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Product Name"
+                      lineageId="Package\Process files CSV and Xls\Grouping and Sum Dollars.Outputs[Aggregate Output 1].Columns[Product Name]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Final Sort.Inputs[Sort Input].Columns[UPC]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="UPC"
+                      lineageId="Package\Process files CSV and Xls\Grouping and Sum Dollars.Outputs[Aggregate Output 1].Columns[UPC]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Final Sort.Inputs[Sort Input].Columns[Dollars]"
+                      cachedDataType="cy"
+                      cachedName="Dollars"
+                      lineageId="Package\Process files CSV and Xls\Grouping and Sum Dollars.Outputs[Aggregate Output 1].Columns[Dollars]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Process files CSV and Xls\Final Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Final Sort.Outputs[Sort Output].Columns[Store]"
+                      dataType="ui4"
+                      lineageId="Package\Process files CSV and Xls\Final Sort.Outputs[Sort Output].Columns[Store]"
+                      name="Store"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Process files CSV and Xls\Grouping and Sum Dollars.Outputs[Aggregate Output 1].Columns[Store]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Final Sort.Outputs[Sort Output].Columns[Product Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Process files CSV and Xls\Final Sort.Outputs[Sort Output].Columns[Product Name]"
+                      name="Product Name"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Process files CSV and Xls\Grouping and Sum Dollars.Outputs[Aggregate Output 1].Columns[Product Name]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Final Sort.Outputs[Sort Output].Columns[UPC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Process files CSV and Xls\Final Sort.Outputs[Sort Output].Columns[UPC]"
+                      name="UPC">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Process files CSV and Xls\Grouping and Sum Dollars.Outputs[Aggregate Output 1].Columns[UPC]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Final Sort.Outputs[Sort Output].Columns[Dollars]"
+                      dataType="cy"
+                      lineageId="Package\Process files CSV and Xls\Final Sort.Outputs[Sort Output].Columns[Dollars]"
+                      name="Dollars">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Process files CSV and Xls\Grouping and Sum Dollars.Outputs[Aggregate Output 1].Columns[Dollars]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Process files CSV and Xls\Grouping and Sum Dollars"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="Grouping and Sum Dollars"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Process files CSV and Xls\Grouping and Sum Dollars.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Grouping and Sum Dollars.Inputs[Aggregate Input 1].Columns[Store]"
+                      cachedDataType="ui4"
+                      cachedName="Store"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1].Columns[Store]" />
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Grouping and Sum Dollars.Inputs[Aggregate Input 1].Columns[Product Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Product Name"
+                      lineageId="Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1].Columns[Product Name]" />
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Grouping and Sum Dollars.Inputs[Aggregate Input 1].Columns[Dollars]"
+                      cachedDataType="cy"
+                      cachedName="Dollars"
+                      lineageId="Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1].Columns[Dollars]" />
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Grouping and Sum Dollars.Inputs[Aggregate Input 1].Columns[UPC]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="UPC"
+                      lineageId="Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1].Columns[UPC]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Process files CSV and Xls\Grouping and Sum Dollars.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Grouping and Sum Dollars.Outputs[Aggregate Output 1].Columns[Store]"
+                      dataType="ui4"
+                      lineageId="Package\Process files CSV and Xls\Grouping and Sum Dollars.Outputs[Aggregate Output 1].Columns[Store]"
+                      name="Store">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1].Columns[Store]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Grouping and Sum Dollars.Outputs[Aggregate Output 1].Columns[Product Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Process files CSV and Xls\Grouping and Sum Dollars.Outputs[Aggregate Output 1].Columns[Product Name]"
+                      name="Product Name">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1].Columns[Product Name]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Grouping and Sum Dollars.Outputs[Aggregate Output 1].Columns[UPC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Process files CSV and Xls\Grouping and Sum Dollars.Outputs[Aggregate Output 1].Columns[UPC]"
+                      name="UPC">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1].Columns[UPC]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Grouping and Sum Dollars.Outputs[Aggregate Output 1].Columns[Dollars]"
+                      dataType="cy"
+                      lineageId="Package\Process files CSV and Xls\Grouping and Sum Dollars.Outputs[Aggregate Output 1].Columns[Dollars]"
+                      name="Dollars">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1].Columns[Dollars]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">4</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Process files CSV and Xls\Merge CSV and XLS"
+              componentClassID="Microsoft.Merge"
+              contactInfo="Merge;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple sorted data flows into one sorted data flow. Unlike the Merge Join, all rows flow to the output. For example, combine two sorted lists of customers into a single sorted list. If sorting is not important, use the Union All transformation. "
+              name="Merge CSV and XLS"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Process files CSV and Xls\Merge CSV and XLS.Inputs[Merge Input 1]"
+                  name="Merge Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Merge CSV and XLS.Inputs[Merge Input 1].Columns[Dollars]"
+                      cachedDataType="cy"
+                      cachedName="Dollars"
+                      lineageId="Package\Process files CSV and Xls\Sort.Outputs[Sort Output].Columns[Dollars]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1].Columns[Dollars]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Merge CSV and XLS.Inputs[Merge Input 1].Columns[ProductName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ProductName"
+                      lineageId="Package\Process files CSV and Xls\Sort.Outputs[Sort Output].Columns[ProductName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1].Columns[Product Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Merge CSV and XLS.Inputs[Merge Input 1].Columns[UPC]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="UPC"
+                      lineageId="Package\Process files CSV and Xls\Sort.Outputs[Sort Output].Columns[UPC]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1].Columns[UPC]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Merge CSV and XLS.Inputs[Merge Input 1].Columns[IntStore]"
+                      cachedDataType="ui4"
+                      cachedName="IntStore"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Process files CSV and Xls\Sort.Outputs[Sort Output].Columns[IntStore]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1].Columns[Store]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Process files CSV and Xls\Merge CSV and XLS.Inputs[Merge Input 2]"
+                  name="Merge Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Merge CSV and XLS.Inputs[Merge Input 2].Columns[Dollars]"
+                      cachedDataType="cy"
+                      cachedName="Dollars"
+                      lineageId="Package\Process files CSV and Xls\Sort 1.Outputs[Sort Output].Columns[Dollars]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1].Columns[Dollars]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Merge CSV and XLS.Inputs[Merge Input 2].Columns[IntStore]"
+                      cachedDataType="ui4"
+                      cachedName="IntStore"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Process files CSV and Xls\Sort 1.Outputs[Sort Output].Columns[IntStore]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1].Columns[Store]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Merge CSV and XLS.Inputs[Merge Input 2].Columns[strProduct]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="strProduct"
+                      lineageId="Package\Process files CSV and Xls\Sort 1.Outputs[Sort Output].Columns[strProduct]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1].Columns[Product Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Merge CSV and XLS.Inputs[Merge Input 2].Columns[strUPC]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="strUPC"
+                      lineageId="Package\Process files CSV and Xls\Sort 1.Outputs[Sort Output].Columns[strUPC]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1].Columns[UPC]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1]"
+                  isSorted="true"
+                  name="Merge Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1].Columns[Dollars]"
+                      dataType="cy"
+                      lineageId="Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1].Columns[Dollars]"
+                      name="Dollars" />
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1].Columns[Store]"
+                      dataType="ui4"
+                      lineageId="Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1].Columns[Store]"
+                      name="Store"
+                      sortKeyPosition="1" />
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1].Columns[Product Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1].Columns[Product Name]"
+                      name="Product Name" />
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1].Columns[UPC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1].Columns[UPC]"
+                      name="UPC" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Process files CSV and Xls\Read CSV File"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Read CSV File"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Process files CSV and Xls\Read CSV File.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CSV Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[CSV Connection Manager]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Output].Columns[AllColumns]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Output].ExternalColumns[Store,Product,Dollars]"
+                      length="50"
+                      lineageId="Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Output].Columns[AllColumns]"
+                      name="AllColumns"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Output].ExternalColumns[Store,Product,Dollars]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Store,Product,Dollars" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Process files CSV and Xls\Read Excel File"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Read Excel File"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Sheet1$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Process files CSV and Xls\Read Excel File.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].Columns[Store]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].ExternalColumns[Store]"
+                      length="255"
+                      lineageId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].Columns[Store]"
+                      name="Store"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].Columns[Product]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].ExternalColumns[Product]"
+                      length="255"
+                      lineageId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].Columns[Product]"
+                      name="Product"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].Columns[Dollars]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].ExternalColumns[Dollars]"
+                      lineageId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].Columns[Dollars]"
+                      name="Dollars"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].ExternalColumns[Store]"
+                      dataType="wstr"
+                      length="255"
+                      name="Store" />
+                    <externalMetadataColumn
+                      refId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].ExternalColumns[Product]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product" />
+                    <externalMetadataColumn
+                      refId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].ExternalColumns[Dollars]"
+                      dataType="cy"
+                      name="Dollars" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Error Output].Columns[Store]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Error Output].Columns[Store]"
+                      name="Store" />
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Error Output].Columns[Product]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Error Output].Columns[Product]"
+                      name="Product" />
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Error Output].Columns[Dollars]"
+                      dataType="cy"
+                      lineageId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Error Output].Columns[Dollars]"
+                      name="Dollars" />
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Process files CSV and Xls\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Process files CSV and Xls\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Sort.Inputs[Sort Input].Columns[IntStore]"
+                      cachedDataType="ui4"
+                      cachedName="IntStore"
+                      lineageId="Package\Process files CSV and Xls\Convert Store to int.Outputs[Data Conversion Output].Columns[IntStore]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Sort.Inputs[Sort Input].Columns[Dollars]"
+                      cachedDataType="cy"
+                      cachedName="Dollars"
+                      lineageId="Package\Process files CSV and Xls\Transform Column CSV.Outputs[Derived Column Output].Columns[Dollars]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Sort.Inputs[Sort Input].Columns[Store]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Store"
+                      lineageId="Package\Process files CSV and Xls\Transform Column CSV.Outputs[Derived Column Output].Columns[Store]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Sort.Inputs[Sort Input].Columns[ProductName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ProductName"
+                      lineageId="Package\Process files CSV and Xls\Transform Column CSV.Outputs[Derived Column Output].Columns[ProductName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Sort.Inputs[Sort Input].Columns[UPC]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="UPC"
+                      lineageId="Package\Process files CSV and Xls\Transform Column CSV.Outputs[Derived Column Output].Columns[UPC]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Process files CSV and Xls\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Sort.Outputs[Sort Output].Columns[IntStore]"
+                      dataType="ui4"
+                      lineageId="Package\Process files CSV and Xls\Sort.Outputs[Sort Output].Columns[IntStore]"
+                      name="IntStore"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Process files CSV and Xls\Convert Store to int.Outputs[Data Conversion Output].Columns[IntStore]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Sort.Outputs[Sort Output].Columns[Dollars]"
+                      dataType="cy"
+                      lineageId="Package\Process files CSV and Xls\Sort.Outputs[Sort Output].Columns[Dollars]"
+                      name="Dollars">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Process files CSV and Xls\Transform Column CSV.Outputs[Derived Column Output].Columns[Dollars]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Sort.Outputs[Sort Output].Columns[Store]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Process files CSV and Xls\Sort.Outputs[Sort Output].Columns[Store]"
+                      name="Store">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Process files CSV and Xls\Transform Column CSV.Outputs[Derived Column Output].Columns[Store]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Sort.Outputs[Sort Output].Columns[ProductName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Process files CSV and Xls\Sort.Outputs[Sort Output].Columns[ProductName]"
+                      name="ProductName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Process files CSV and Xls\Transform Column CSV.Outputs[Derived Column Output].Columns[ProductName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Sort.Outputs[Sort Output].Columns[UPC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Process files CSV and Xls\Sort.Outputs[Sort Output].Columns[UPC]"
+                      name="UPC">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Process files CSV and Xls\Transform Column CSV.Outputs[Derived Column Output].Columns[UPC]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Process files CSV and Xls\Sort 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Process files CSV and Xls\Sort 1.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Sort 1.Inputs[Sort Input].Columns[Dollars]"
+                      cachedDataType="cy"
+                      cachedName="Dollars"
+                      lineageId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].Columns[Dollars]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Sort 1.Inputs[Sort Input].Columns[IntStore]"
+                      cachedDataType="ui4"
+                      cachedName="IntStore"
+                      lineageId="Package\Process files CSV and Xls\Store to int.Outputs[Data Conversion Output].Columns[IntStore]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Sort 1.Inputs[Sort Input].Columns[strProduct]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="strProduct"
+                      lineageId="Package\Process files CSV and Xls\Split Product - UPC.Outputs[Derived Column Output].Columns[strProduct]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Sort 1.Inputs[Sort Input].Columns[strUPC]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="strUPC"
+                      lineageId="Package\Process files CSV and Xls\Split Product - UPC.Outputs[Derived Column Output].Columns[strUPC]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Process files CSV and Xls\Sort 1.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Sort 1.Outputs[Sort Output].Columns[Dollars]"
+                      dataType="cy"
+                      lineageId="Package\Process files CSV and Xls\Sort 1.Outputs[Sort Output].Columns[Dollars]"
+                      name="Dollars">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].Columns[Dollars]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Sort 1.Outputs[Sort Output].Columns[IntStore]"
+                      dataType="ui4"
+                      lineageId="Package\Process files CSV and Xls\Sort 1.Outputs[Sort Output].Columns[IntStore]"
+                      name="IntStore"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Process files CSV and Xls\Store to int.Outputs[Data Conversion Output].Columns[IntStore]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Sort 1.Outputs[Sort Output].Columns[strProduct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Process files CSV and Xls\Sort 1.Outputs[Sort Output].Columns[strProduct]"
+                      name="strProduct">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Process files CSV and Xls\Split Product - UPC.Outputs[Derived Column Output].Columns[strProduct]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Sort 1.Outputs[Sort Output].Columns[strUPC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Process files CSV and Xls\Sort 1.Outputs[Sort Output].Columns[strUPC]"
+                      name="strUPC">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Process files CSV and Xls\Split Product - UPC.Outputs[Derived Column Output].Columns[strUPC]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Process files CSV and Xls\Split Product - UPC"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Split Product - UPC"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Process files CSV and Xls\Split Product - UPC.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Split Product - UPC.Inputs[Derived Column Input].Columns[Store]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Store"
+                      lineageId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].Columns[Store]" />
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Split Product - UPC.Inputs[Derived Column Input].Columns[Product]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Product"
+                      lineageId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].Columns[Product]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Process files CSV and Xls\Split Product - UPC.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Process files CSV and Xls\Split Product - UPC.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Split Product - UPC.Outputs[Derived Column Output].Columns[strStore]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Process files CSV and Xls\Split Product - UPC.Outputs[Derived Column Output].Columns[strStore]"
+                      name="strStore"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,50,1252)#{Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].Columns[Store]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,50,1252)Store</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Split Product - UPC.Outputs[Derived Column Output].Columns[strProduct]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Process files CSV and Xls\Split Product - UPC.Outputs[Derived Column Output].Columns[strProduct]"
+                      name="strProduct"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,50,1252)[SUBSTRING](#{Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].Columns[Product]},1,[FINDSTRING](#{Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].Columns[Product]},"_",1) - 1)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,50,1252)SUBSTRING(Product,1,FINDSTRING(Product,"_",1) - 1)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Split Product - UPC.Outputs[Derived Column Output].Columns[strUPC]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Process files CSV and Xls\Split Product - UPC.Outputs[Derived Column Output].Columns[strUPC]"
+                      name="strUPC"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,50,1252)[SUBSTRING](#{Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].Columns[Product]},[FINDSTRING](#{Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].Columns[Product]},"_",1) + 1,[LEN](#{Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].Columns[Product]}) - [LEN]([SUBSTRING](#{Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].Columns[Product]},1,[FINDSTRING](#{Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].Columns[Product]},"_",1))))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,50,1252)SUBSTRING(Product,FINDSTRING(Product,"_",1) + 1,LEN(Product) - LEN(SUBSTRING(Product,1,FINDSTRING(Product,"_",1))))</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Process files CSV and Xls\Split Product - UPC.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Process files CSV and Xls\Split Product - UPC.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Split Product - UPC.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Process files CSV and Xls\Split Product - UPC.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Split Product - UPC.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Process files CSV and Xls\Split Product - UPC.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Process files CSV and Xls\Store to int"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Store to int"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Process files CSV and Xls\Store to int.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Store to int.Inputs[Data Conversion Input].Columns[Store]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Store"
+                      lineageId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].Columns[Store]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Process files CSV and Xls\Store to int.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Process files CSV and Xls\Store to int.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Store to int.Outputs[Data Conversion Output].Columns[IntStore]"
+                      dataType="ui4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Process files CSV and Xls\Store to int.Outputs[Data Conversion Output].Columns[IntStore]"
+                      name="IntStore"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output].Columns[Store]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Process files CSV and Xls\Store to int.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Process files CSV and Xls\Store to int.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Store to int.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Process files CSV and Xls\Store to int.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Store to int.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Process files CSV and Xls\Store to int.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Process files CSV and Xls\Transform Column CSV"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Transform Column CSV"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Process files CSV and Xls\Transform Column CSV.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Process files CSV and Xls\Transform Column CSV.Inputs[Derived Column Input].Columns[AllColumns]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="AllColumns"
+                      lineageId="Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Output].Columns[AllColumns]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Process files CSV and Xls\Transform Column CSV.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Process files CSV and Xls\Transform Column CSV.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Transform Column CSV.Outputs[Derived Column Output].Columns[Store]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Process files CSV and Xls\Transform Column CSV.Outputs[Derived Column Output].Columns[Store]"
+                      name="Store"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,50,1252)[SUBSTRING](#{Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Output].Columns[AllColumns]},1,[FINDSTRING](#{Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Output].Columns[AllColumns]},",",1) - 1)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,50,1252)SUBSTRING(AllColumns,1,FINDSTRING(AllColumns,",",1) - 1)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Transform Column CSV.Outputs[Derived Column Output].Columns[Dollars]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Process files CSV and Xls\Transform Column CSV.Outputs[Derived Column Output].Columns[Dollars]"
+                      name="Dollars"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_CY)[REPLACE]([REPLACE]([SUBSTRING](#{Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Output].Columns[AllColumns]},[FINDSTRING](#{Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Output].Columns[AllColumns]},",",2) + 1,[LEN](#{Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Output].Columns[AllColumns]}) - [FINDSTRING](#{Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Output].Columns[AllColumns]},",",2) + 1),",",""),"\"","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_CY)REPLACE(REPLACE(SUBSTRING(AllColumns,FINDSTRING(AllColumns,",",2) + 1,LEN(AllColumns) - FINDSTRING(AllColumns,",",2) + 1),",",""),"\"","")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Transform Column CSV.Outputs[Derived Column Output].Columns[ProductName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Process files CSV and Xls\Transform Column CSV.Outputs[Derived Column Output].Columns[ProductName]"
+                      name="ProductName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,50,1252)[SUBSTRING](#{Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Output].Columns[AllColumns]},[FINDSTRING](#{Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Output].Columns[AllColumns]},",",1) + 1,([FINDSTRING](#{Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Output].Columns[AllColumns]},"_",1) - [FINDSTRING](#{Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Output].Columns[AllColumns]},",",1)) - 1)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,50,1252)SUBSTRING(AllColumns,FINDSTRING(AllColumns,",",1) + 1,(FINDSTRING(AllColumns,"_",1) - FINDSTRING(AllColumns,",",1)) - 1)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Transform Column CSV.Outputs[Derived Column Output].Columns[UPC]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Process files CSV and Xls\Transform Column CSV.Outputs[Derived Column Output].Columns[UPC]"
+                      name="UPC"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,50,1252)[SUBSTRING](#{Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Output].Columns[AllColumns]},[FINDSTRING](#{Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Output].Columns[AllColumns]},"_",1) + 1,([FINDSTRING](#{Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Output].Columns[AllColumns]},",",2) - [FINDSTRING](#{Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Output].Columns[AllColumns]},"_",1)) - 1)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,50,1252)SUBSTRING(AllColumns,FINDSTRING(AllColumns,"_",1) + 1,(FINDSTRING(AllColumns,",",2) - FINDSTRING(AllColumns,"_",1)) - 1)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Process files CSV and Xls\Transform Column CSV.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Process files CSV and Xls\Transform Column CSV.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Transform Column CSV.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Process files CSV and Xls\Transform Column CSV.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Process files CSV and Xls\Transform Column CSV.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Process files CSV and Xls\Transform Column CSV.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Process files CSV and Xls.Paths[Aggregate Output 1]"
+              endId="Package\Process files CSV and Xls\Final Sort.Inputs[Sort Input]"
+              name="Aggregate Output 1"
+              startId="Package\Process files CSV and Xls\Grouping and Sum Dollars.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\Process files CSV and Xls.Paths[Data Conversion Output]"
+              endId="Package\Process files CSV and Xls\Sort.Inputs[Sort Input]"
+              name="Data Conversion Output"
+              startId="Package\Process files CSV and Xls\Convert Store to int.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Process files CSV and Xls.Paths[Data Conversion Output1]"
+              endId="Package\Process files CSV and Xls\Sort 1.Inputs[Sort Input]"
+              name="Data Conversion Output"
+              startId="Package\Process files CSV and Xls\Store to int.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Process files CSV and Xls.Paths[Derived Column Output]"
+              endId="Package\Process files CSV and Xls\Convert Store to int.Inputs[Data Conversion Input]"
+              name="Derived Column Output"
+              startId="Package\Process files CSV and Xls\Transform Column CSV.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Process files CSV and Xls.Paths[Derived Column Output1]"
+              endId="Package\Process files CSV and Xls\Store to int.Inputs[Data Conversion Input]"
+              name="Derived Column Output"
+              startId="Package\Process files CSV and Xls\Split Product - UPC.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Process files CSV and Xls.Paths[Derived Column Output2]"
+              endId="Package\Process files CSV and Xls\CSV Result.Inputs[Flat File Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Process files CSV and Xls\Add &quot;$&quot; for output file.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Process files CSV and Xls.Paths[Excel Source Output]"
+              endId="Package\Process files CSV and Xls\Split Product - UPC.Inputs[Derived Column Input]"
+              name="Excel Source Output"
+              startId="Package\Process files CSV and Xls\Read Excel File.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Process files CSV and Xls.Paths[Flat File Source Output]"
+              endId="Package\Process files CSV and Xls\Transform Column CSV.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Process files CSV and Xls\Read CSV File.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Process files CSV and Xls.Paths[Merge Output 1]"
+              endId="Package\Process files CSV and Xls\Grouping and Sum Dollars.Inputs[Aggregate Input 1]"
+              name="Merge Output 1"
+              startId="Package\Process files CSV and Xls\Merge CSV and XLS.Outputs[Merge Output 1]" />
+            <path
+              refId="Package\Process files CSV and Xls.Paths[Sort Output]"
+              endId="Package\Process files CSV and Xls\Merge CSV and XLS.Inputs[Merge Input 2]"
+              name="Sort Output"
+              startId="Package\Process files CSV and Xls\Sort 1.Outputs[Sort Output]" />
+            <path
+              refId="Package\Process files CSV and Xls.Paths[Sort Output1]"
+              endId="Package\Process files CSV and Xls\Merge CSV and XLS.Inputs[Merge Input 1]"
+              name="Sort Output"
+              startId="Package\Process files CSV and Xls\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\Process files CSV and Xls.Paths[Sort Output2]"
+              endId="Package\Process files CSV and Xls\Add &quot;$&quot; for output file.Inputs[Derived Column Input]"
+              name="Sort Output"
+              startId="Package\Process files CSV and Xls\Final Sort.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="196,42"
+          Id="Package\Process files CSV and Xls"
+          TopLeft="315,80" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Process files CSV and Xls">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="123,42"
+          Id="Package\Process files CSV and Xls\Final Sort"
+          TopLeft="355,481" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Process files CSV and Xls\Read Excel File"
+          TopLeft="448,21" />
+        <NodeLayout
+          Size="202,42"
+          Id="Package\Process files CSV and Xls\Grouping and Sum Dollars"
+          TopLeft="316,407" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Process files CSV and Xls\CSV Result"
+          TopLeft="350,631" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Process files CSV and Xls\Merge CSV and XLS"
+          TopLeft="325,334" />
+        <NodeLayout
+          Size="107,42"
+          Id="Package\Process files CSV and Xls\Sort 1"
+          TopLeft="485,261" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\Process files CSV and Xls\Transform Column CSV"
+          TopLeft="148,105" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Process files CSV and Xls\Convert Store to int"
+          TopLeft="149,186" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Process files CSV and Xls\Read CSV File"
+          TopLeft="173,21" />
+        <NodeLayout
+          Size="98,42"
+          Id="Package\Process files CSV and Xls\Sort"
+          TopLeft="179,259" />
+        <NodeLayout
+          Size="132,42"
+          Id="Package\Process files CSV and Xls\Store to int"
+          TopLeft="454,190" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\Process files CSV and Xls\Add &quot;$&quot; for output file"
+          TopLeft="323,550" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Process files CSV and Xls\Split Product - UPC"
+          TopLeft="441,105" />
+        <EdgeLayout
+          Id="Package\Process files CSV and Xls.Paths[Sort Output2]"
+          TopLeft="415.5,523">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27"
+              Start="0,0"
+              End="0,19.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Process files CSV and Xls.Paths[Sort Output1]"
+          TopLeft="228,301">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="155.666666666667,33"
+              Start="0,0"
+              End="155.666666666667,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.6175115207373" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.6175115207373"
+                    Point2="0,19.6175115207373"
+                    Point3="4,19.6175115207373" />
+                  <mssgle:LineSegment
+                    End="151.666666666667,19.6175115207373" />
+                  <mssgle:CubicBezierSegment
+                    Point1="151.666666666667,19.6175115207373"
+                    Point2="155.666666666667,19.6175115207373"
+                    Point3="155.666666666667,23.6175115207373" />
+                  <mssgle:LineSegment
+                    End="155.666666666667,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Process files CSV and Xls.Paths[Sort Output]"
+          TopLeft="538.5,303">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-100.166666666667,31"
+              Start="0,0"
+              End="-100.166666666667,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.4285714285714" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.4285714285714"
+                    Point2="0,18.4285714285714"
+                    Point3="-4,18.4285714285714" />
+                  <mssgle:LineSegment
+                    End="-96.1666666666667,18.4285714285714" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-96.1666666666667,18.4285714285714"
+                    Point2="-100.166666666667,18.4285714285714"
+                    Point3="-100.166666666667,22.4285714285714" />
+                  <mssgle:LineSegment
+                    End="-100.166666666667,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Process files CSV and Xls.Paths[Merge Output 1]"
+          TopLeft="414,376">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31"
+              Start="0,0"
+              End="0,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Process files CSV and Xls.Paths[Flat File Source Output]"
+          TopLeft="243.5,63">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Process files CSV and Xls.Paths[Excel Source Output]"
+          TopLeft="524,63">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Process files CSV and Xls.Paths[Derived Column Output2]"
+          TopLeft="414.75,592">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Process files CSV and Xls.Paths[Derived Column Output1]"
+          TopLeft="522.5,147">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43"
+              Start="0,0"
+              End="0,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Process files CSV and Xls.Paths[Derived Column Output]"
+          TopLeft="238.5,147">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Process files CSV and Xls.Paths[Data Conversion Output1]"
+          TopLeft="520,232">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.5,29"
+              Start="0,0"
+              End="18.5,21.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.5"
+                    Point2="0,14.5"
+                    Point3="4,14.5" />
+                  <mssgle:LineSegment
+                    End="14.5,14.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.5,14.5"
+                    Point2="18.5,14.5"
+                    Point3="18.5,18.5" />
+                  <mssgle:LineSegment
+                    End="18.5,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Process files CSV and Xls.Paths[Data Conversion Output]"
+          TopLeft="231.5,228">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31"
+              Start="0,0"
+              End="0,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Process files CSV and Xls.Paths[Aggregate Output 1]"
+          TopLeft="416.75,449">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
